@@ -91,6 +91,7 @@ class openvpn::params {
 
   $port = '1194'
   $protocol = 'tcp'
+  $local = ''
 
   # General Settings
   $my_class = ''
@@ -104,6 +105,14 @@ class openvpn::params {
   $absent = false
   $disable = false
   $disableboot = false
+
+  # Certificate related settings
+  $ca_file = 'ca.crt'
+  $cert_file = "${hostname}.crt"
+  $key_file = "${hostname}.key"
+  $crl_file = ''
+  $dh_file = 'dh1024.pem'
+  $tls_auth_file = ''
 
   ### General module variables that can have a site or per module default
   $monitor = false

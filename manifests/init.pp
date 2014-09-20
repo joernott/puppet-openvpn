@@ -199,6 +199,41 @@
 #   Can be defined also by the (top scope) variable $openvpn_protocol
 #
 #
+# [*ca_file*]
+#   Certificate of the Certificate Authority being used.
+#   This defaults to ca.crt to keep compatibility with previous versions
+#   but allows overriding with own file names if needed
+#
+#
+# [*cert_file*]
+#   Certificate of the VPN server.
+#   This defaults to %hostname.crt to keep compatibility with previous versions
+#   but allows overriding with own file names if needed
+#
+# [*key_file*]
+#   Private key of the VPN server.
+#   This defaults to %hostname.key to keep compatibility with previous versions
+#   but allows overriding with own file names if needed
+#
+# [*crl_file*]
+#   Certificate revocation list.
+#   is empty by default but should be set to the file name containing the CRL
+#
+# [*dh_file*]
+#   Diffie Hellman file.
+#   This defaults to dh1024.pem to keep compatibility with previous versions
+#   but allows overriding with own file names if needed
+#
+# [*tls_auth_file*]
+#   TLS authentication file
+#   is empty by default but should be set to the file name containing the CRL
+#
+# [*local*]
+#   local IP to listen to
+#   is empty by default but can be set to the IP on which the server is listening
+#
+
+
 # == Examples
 #
 # You can use this class in 2 ways:
@@ -253,7 +288,14 @@ class openvpn (
   $log_dir             = params_lookup( 'log_dir' ),
   $log_file            = params_lookup( 'log_file' ),
   $port                = params_lookup( 'port' ),
-  $protocol            = params_lookup( 'protocol' )
+  $protocol            = params_lookup( 'protocol' ),
+  $ca_file             = params_lookup( 'ca_file' ),
+  $cert_file           = params_lookup( 'cert_file' ),
+  $key_file            = params_lookup( 'key_file' ),
+  $crl_file            = params_lookup( 'crl_file' ),
+  $dh_file             = params_lookup( 'dh_file' ),
+  $tls_auth_file       = params_lookup( 'tls_auth_file' ),
+  $local               = params_lookup( 'local' )
   ) inherits openvpn::params {
 
   $bool_source_dir_purge=any2bool($source_dir_purge)

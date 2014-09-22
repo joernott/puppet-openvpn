@@ -91,7 +91,11 @@ class openvpn::params {
 
   $port = '1194'
   $protocol = 'tcp'
+  $device = 'tun'
   $local = ''
+  $routes = []
+  $pushes = []
+  $server = ''
 
   # General Settings
   $my_class = ''

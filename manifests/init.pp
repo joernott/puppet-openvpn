@@ -289,13 +289,17 @@ class openvpn (
   $log_file            = params_lookup( 'log_file' ),
   $port                = params_lookup( 'port' ),
   $protocol            = params_lookup( 'protocol' ),
+  $device              = params_lookup( 'device' ),
+  $server              = params_lookup( 'server' ),
   $ca_file             = params_lookup( 'ca_file' ),
   $cert_file           = params_lookup( 'cert_file' ),
   $key_file            = params_lookup( 'key_file' ),
   $crl_file            = params_lookup( 'crl_file' ),
   $dh_file             = params_lookup( 'dh_file' ),
   $tls_auth_file       = params_lookup( 'tls_auth_file' ),
-  $local               = params_lookup( 'local' )
+  $local               = params_lookup( 'local' ),
+  $routes              = params_lookup( 'routes' ),
+  $pushes              = params_lookup( 'pushes' )
   ) inherits openvpn::params {
 
   $bool_source_dir_purge=any2bool($source_dir_purge)
@@ -308,6 +312,16 @@ class openvpn (
   $bool_firewall=any2bool($firewall)
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
+
+  $real_proto = $protocol ? {
+    /(?i)tcp/ => 'tcp',
+    default   => 'udp'
+  }
+
+  $real_device = $device ? {
+    /(?i)tap/ => 'tap',
+    default   => 'tun'
+  }
 
   ### Definition of some variables used in the module
   $manage_package = $openvpn::bool_absent ? {

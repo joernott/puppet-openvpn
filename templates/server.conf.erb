@@ -2,10 +2,14 @@
 mode server
 <% if @local != '' %>local <%= @local %><% end -%>
 port <%= @port %>
-proto <%= @real_proto %>
-dev <%= @dev %>
-<% if @route != '' %>route <%= @route %><% end -%> 
-<% if @push != '' %>push <%= @push %><% end -%> 
+proto <%= scope.lookupvar("openvpn::real_proto") %>
+dev <%= scope.lookupvar("openvpn::real_device") %>
+<% @routes.each do |route| -%>
+<% if @route != '' %>route <%= @route %><% end -%>
+<% end -%>
+<% @pushes.each do |push| -%> 
+<% if @push != '' %>push <%= @push %><% end -%>
+<% end -%>
 <% if @server != '' %>server <%= @server %><% end -%> 
 
 <% if @auth_type == "key" -%>

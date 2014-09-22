@@ -8,9 +8,9 @@ dev <%= scope.lookupvar("openvpn::real_device") %>
 <% if @route != '' %>route <%= @route %><% end -%>
 <% end %>
 <% @pushes.each do |push| -%> 
-<% if @push != '' %>push <%= @push %><% end -%>
+<% if push != '' %>push <%= push %><% end -%>
 <% end %>
-<% if @server != '' %>server <%= @server %><% end -%> 
+<% if server != '' %>server <%= server %><% end -%> 
 
 <% if @auth_type == "key" -%>
 secret <%= scope.lookupvar("openvpn::config_dir") %>/<%= @name %>.key 

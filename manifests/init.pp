@@ -299,7 +299,8 @@ class openvpn (
   $tls_auth_file       = params_lookup( 'tls_auth_file' ),
   $local               = params_lookup( 'local' ),
   $routes              = params_lookup( 'routes' ),
-  $pushes              = params_lookup( 'pushes' )
+  $pushes              = params_lookup( 'pushes' ),
+  $auth_type           = params_lookup( 'auth_type' )
   ) inherits openvpn::params {
 
   $bool_source_dir_purge=any2bool($source_dir_purge)

@@ -117,6 +117,7 @@ class openvpn::params {
   $crl_file = ''
   $dh_file = 'dh1024.pem'
   $tls_auth_file = ''
+  $auth_type = 'tls-server'
 
   ### General module variables that can have a site or per module default
   $monitor = false

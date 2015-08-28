@@ -4,7 +4,9 @@ mode server
 port <%= @port %>
 proto <%= scope.lookupvar("openvpn::real_proto") %>
 dev <%= scope.lookupvar("openvpn::real_device") %>
-<% if @management !='' >management <%= management %>7505<% end -%>
+<% if @management !='' -%>
+management <%= management %> 7505
+<% end -%>
 <% @routes.each do |route| -%>
 <% if @route != '' %>route <%= @route %><% end -%>
 <% end %>

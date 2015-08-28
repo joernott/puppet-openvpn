@@ -93,6 +93,7 @@ class openvpn::params {
   $protocol = 'tcp'
   $device = 'tun'
   $local = ''
+  $management = ''
   $routes = []
   $pushes = []
   $server = ''
@@ -131,5 +132,4 @@ class openvpn::params {
   $puppi_helper = 'standard'
   $debug = false
   $audit_only = false
-
 }

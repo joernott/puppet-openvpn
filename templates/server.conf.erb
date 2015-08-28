@@ -4,6 +4,7 @@ mode server
 port <%= @port %>
 proto <%= scope.lookupvar("openvpn::real_proto") %>
 dev <%= scope.lookupvar("openvpn::real_device") %>
+<% if @management !='' >management <%= management %>7505<% end -%>
 <% @routes.each do |route| -%>
 <% if @route != '' %>route <%= @route %><% end -%>
 <% end %>
@@ -22,7 +23,7 @@ cert <%= scope.lookupvar("openvpn::cert_file") %>
 key <%= scope.lookupvar("openvpn::key_file") %>
 <% if  scope.lookupvar("openvpn::crl_file") != '' -%>crl-verify <%= scope.lookupvar("openvpn::crl_file") %><% end -%>
 dh <%= scope.lookupvar("openvpn::dh_file") %>
-# duplicate-cn
+duplicate-cn
 <% end -%>
 <% if  scope.lookupvar("openvpn::tls_auth_file") != '' -%>tls-auth <%= scope.lookupvar("openvpn::tls_auth_file") %><% end -%>
 # client-config-dir ccd

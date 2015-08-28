@@ -232,6 +232,11 @@
 #   local IP to listen to
 #   is empty by default but can be set to the IP on which the server is listening
 #
+# [*management*]
+#   local IP/hostname to listen to for the management connection
+#   is empty by default but can be set to the IP on which the server should open the telnet connection.
+#   Make sure, you secure it adequately.
+#
 
 
 # == Examples
@@ -300,7 +305,8 @@ class openvpn (
   $local               = params_lookup( 'local' ),
   $routes              = params_lookup( 'routes' ),
   $pushes              = params_lookup( 'pushes' ),
-  $auth_type           = params_lookup( 'auth_type' )
+  $auth_type           = params_lookup( 'auth_type' ),
+  $management          = params_lookup( 'management' )
   ) inherits openvpn::params {
 
   $bool_source_dir_purge=any2bool($source_dir_purge)
